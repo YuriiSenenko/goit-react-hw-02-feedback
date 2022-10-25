@@ -1,5 +1,6 @@
 import React from 'react';
-import css from './Buttons.module.css';
+import css from './FeedbackOptions.module.css';
+import PropTypes from 'prop-types';
 
 export const Buttons = ({ onGood, onNeutrals, onBad }) => {
   return (
@@ -15,4 +16,10 @@ export const Buttons = ({ onGood, onNeutrals, onBad }) => {
       </button>
     </div>
   );
+};
+
+Buttons.propTypes = {
+  onGood: PropTypes.func,
+  onNeutrals: PropTypes.func,
+  onBad: PropTypes.func,
 };
