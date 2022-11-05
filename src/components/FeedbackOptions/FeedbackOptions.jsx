@@ -2,7 +2,7 @@ import React from 'react';
 import css from './FeedbackOptions.module.css';
 import PropTypes from 'prop-types';
 
-export const Buttons = ({ onGood, onNeutrals, onBad }) => {
+export const FeedbackOptions = ({ onGood, onNeutrals, onBad }) => {
   return (
     <div>
       <button className={css.button} type="button" onClick={onGood}>
@@ -18,7 +18,7 @@ export const Buttons = ({ onGood, onNeutrals, onBad }) => {
   );
 };
 
-Buttons.propTypes = {
+FeedbackOptions.propTypes = {
   onGood: PropTypes.func,
   onNeutrals: PropTypes.func,
   onBad: PropTypes.func,

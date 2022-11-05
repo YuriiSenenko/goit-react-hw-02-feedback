@@ -1,13 +1,13 @@
 import React from 'react';
 import { Title } from 'components/Section/Section';
-import { Buttons } from 'components/FeedbackOptions/FeedbackOptions';
+// import { FeedbackOptions } from 'components/FeedbackOptions/FeedbackOptions';
 import { StatisticsTitle } from 'components/StatisticsTitle/StatisticsTitle';
 import { Statistics } from 'components/Statistics/Statistics';
 import { Notification } from 'components/Notification/Notification';
+import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 
 let total = 0;
 let percentage = 0;
-console.log(percentage);
 
 export class App extends React.Component {
   state = {
@@ -42,34 +42,27 @@ export class App extends React.Component {
   };
 
   render() {
+    const { good, neutral, bad } = this.state;
     return (
       <section>
         <Title>Please leave feedback</Title>
-        <Buttons
+        <FeedbackOptions
           onGood={this.handlerGood}
           onNeutrals={this.handlerNeutral}
           onBad={this.handlerBad}
         />
 
-        <StatisticsTitle
-          good={this.state.good}
-          neutrals={this.state.neutral}
-          bad={this.state.bad}
-        >
+        <StatisticsTitle good={good} neutrals={neutral} bad={bad}>
           Statistics
         </StatisticsTitle>
 
-        {this.countTotalFeedback(
-          this.state.good,
-          this.state.neutral,
-          this.state.bad
-        ) === 0 ? (
-          <Notification />
+        {this.countTotalFeedback(good, neutral, bad) === 0 ? (
+          <Notification>There is no feedback</Notification>
         ) : (
           <Statistics
-            good={this.state.good}
-            neutrals={this.state.neutral}
-            bad={this.state.bad}
+            good={good}
+            neutrals={neutral}
+            bad={bad}
             total={total}
             positivePercentage={percentage}
           />

@@ -1,3 +1,3 @@
-export const Notification = () => {
-  return <h3>There is no feedback</h3>;
+export const Notification = ({ children }) => {
+  return <h3>{children}</h3>;
 };
