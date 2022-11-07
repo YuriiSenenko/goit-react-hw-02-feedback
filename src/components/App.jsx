@@ -16,15 +16,9 @@ export class App extends React.Component {
     bad: 0,
   };
 
-  handlerGood = () => {
-    this.setState(prevState => ({ good: prevState.good + 1 }));
-  };
-  handlerNeutral = () => {
-    this.setState(prevState => ({ neutral: prevState.neutral + 1 }));
-  };
-  handlerBad = () => {
+  increment = event => {
     this.setState(prevState => {
-      return { bad: prevState.bad + 1 };
+      return { [event.target.name]: prevState[event.target.name] + 1 };
     });
   };
 
@@ -47,9 +41,8 @@ export class App extends React.Component {
       <section>
         <Title>Please leave feedback</Title>
         <FeedbackOptions
-          onGood={this.handlerGood}
-          onNeutrals={this.handlerNeutral}
-          onBad={this.handlerBad}
+          options={['good', 'neutral', 'bad']}
+          onLeaveFeedback={this.increment}
         />
 
         <StatisticsTitle good={good} neutrals={neutral} bad={bad}>
